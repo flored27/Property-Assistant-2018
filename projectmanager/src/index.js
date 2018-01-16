@@ -3,34 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
+import combineReducers from './reducers/index';
 
 import App from './App';
 
-const initialState = { currentUser: {} };
-const authReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SET_CURRENT_USER':
-      const { id, username } = action.user;
-      return { ...state, currentUser: { id, username } };
-    case 'LOGOUT_USER':
-      return { ...state, currentUser: {} };
-    default:
-      return state;
-  }
-};
-
-const rootReducer = combineReducers({
-  auth: authReducer
-});
-
-const store = createStore(rootReducer, applyMiddleware(reduxThunk));
+const store = createStore(combineReducers, applyMiddleware(reduxThunk));
 
 const Root = ({ store }) => {
+  console.log(store)
   return (
+
     <Router>
       <Provider store={store}>
         <Route path="/" component={App} />

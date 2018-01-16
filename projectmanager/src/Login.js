@@ -6,7 +6,11 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { withRouter } from 'react-router-dom';
-import * as actions from './actions';
+import {bindActionCreators } from 'redux';
+import * as actions from './actions/index';
+import {loginUser} from './actions/index';
+import {fetchUser} from './actions/index';
+import {store} from './index'
 class Login extends Component {
 constructor(props){
   super(props);
@@ -16,20 +20,14 @@ constructor(props){
   }
 }
 
+  handleFetchUser = () =>{
+    this.props.fetchUser();
+  }
+
   handleClick = (event) =>{
-   var self = this;
-   var apiBaseUrl = "http://localhost:3000/login/";
-   console.log(this.state)
-   fetch(apiBaseUrl, {
-     method: 'POST',
-     headers: {
-       "Content-Type": "application/json",
-       Accept: "application/json"
-     },
-     body: JSON.stringify(this.state)
-   })
-   .then(data=>data.json())
-   .then(data=>console.log(data))
+    event.preventDefault();
+    console.log(this.state)
+   this.props.loginUser(this.state.email, this.state.password);
   //  .then(response=>function(response){
   //  return console.log(response);
   //  if(response.data.code === 200){
@@ -53,7 +51,10 @@ constructor(props){
    }
 
 
+
+
 render() {
+  console.log(this.context.store)
     return (
       <div>
         <MuiThemeProvider>
@@ -75,6 +76,7 @@ render() {
                />
              <br/>
              <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Fetch User" onClick={() => this.handleFetchUser()}/>
          </div>
          </MuiThemeProvider>
       </div>
@@ -84,4 +86,16 @@ render() {
 const style = {
  margin: 15,
 };
-export default Login;
+
+// const mapDispatchToProps=(dispatch)=>{
+//   return { loginUser: bindActionCreators(this.props.loginUser, dispatch)  }
+// };
+//
+// export default withRouter(connect(null, mapDispatchToProps)(Login));
+
+const mapStateToProps=(state)=>{
+  console.log(state)
+  return {current_user:state.currentUser}
+}
+
+export default connect(mapStateToProps, {loginUser: loginUser, fetchUser: fetchUser})(Login)
