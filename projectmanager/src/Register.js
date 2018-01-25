@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
+import { connect } from 'react-redux';
+import {setUser} from './actions/index';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import axios from 'axios';
-import Login from './Login';
+import './initial.css';
 class Register extends Component {
   constructor(props){
     super(props);
@@ -12,49 +12,47 @@ class Register extends Component {
       first_name:'',
       last_name:'',
       email:'',
+      phone: '',
       password:''
     }
   }
     handleClick = (event) => {
-    var apiBaseUrl = "http://localhost:3000/api/";
-    console.log("values",this.state.first_name,this.state.last_name,this.state.email,this.state.password);
-    //To be done:check for empty values before hitting submit
-    var self = this;
-    var payload={
-    "first_name": this.state.first_name,
-    "last_name":this.state.last_name,
-    "email":this.state.email,
-    "password":this.state.password
-    }
-    axios.post(apiBaseUrl+'/register', payload)
-   .then(function (response) {
-     console.log(response);
-     if(response.data.code == 200){
-      //  console.log("registration successfull");
-       var loginscreen=[];
-       loginscreen.push(<Login parentContext={this}/>);
-       var loginmessage = "Not Registered yet.Go to registration";
-       self.props.parentContext.setState({loginscreen:loginscreen,
-       loginmessage:loginmessage,
-       buttonLabel:"Register",
-       isLogin:true
-        });
-     }
-   })
-   .catch(function (error) {
-     console.log(error);
-   });
+      console.log(this.state)
+      event.preventDefault();
+        const fullName = this.state.first_name + " " + this.state.last_name
+        console.log(fullName)
+        fetch('http://localhost:3000/landlords', {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+          body: JSON.stringify({
+            landlord: {name: fullName,
+            email: this.state.email,
+            phone: this.state.phone,
+            password: this.state.password}
+          })
+        })
+        .then(data => data.json())
+        .then(data=>this.props.setUser(this.state.email, this.state.password))
+
   }
 
 
   render() {
     return (
-      <div>
+      <div className="Register">
+      <br/>
+      <br/>
+      <div class="ui tertiary inverted light blue segment">
+        <h1 class="ui center aligned icon header">
+          <i class="circular add user icon"></i>
+          Register:
+        </h1>
+      </div>
         <MuiThemeProvider>
           <div>
-          <AppBar
-             title="Register"
-           />
            <TextField
              hintText="Enter your First Name"
              floatingLabelText="First Name"
@@ -75,6 +73,12 @@ class Register extends Component {
              />
            <br/>
            <TextField
+             hintText="Enter your Phone Number"
+             floatingLabelText="Phone Number"
+             onChange = {(event,newValue) => this.setState({phone:newValue})}
+             />
+           <br/>
+           <TextField
              type = "password"
              hintText="Enter your Password"
              floatingLabelText="Password"
@@ -91,4 +95,10 @@ class Register extends Component {
 const style = {
   margin: 15,
 };
-export default Register;
+
+const mapStateToProps=(state)=>{
+  console.log(state)
+  return {current_user:state.currentUser}
+}
+
+export default connect(mapStateToProps, {setUser: setUser})(Register)

@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { withRouter } from 'react-router-dom';
-import {bindActionCreators } from 'redux';
-import * as actions from './actions/index';
 import {loginUser} from './actions/index';
 import {fetchUser} from './actions/index';
-import {store} from './index'
+
 class Login extends Component {
 constructor(props){
   super(props);
   this.state={
   email:'',
-  password:''
+  password:'',
+  open: false
   }
 }
 
@@ -26,42 +25,64 @@ constructor(props){
 
   handleClick = (event) =>{
     event.preventDefault();
-    console.log(this.state)
-   this.props.loginUser(this.state.email, this.state.password);
-  //  .then(response=>function(response){
-  //  return console.log(response);
-  //  if(response.data.code === 200){
-  //  console.log("Login successfull");
-  //  var uploadScreen=[];
-  //  uploadScreen.push(<uploadScreen appContext={self.props.appContext}/>)
-  //  self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
-  //  }
-  //  else if(response.data.code === 204){
-  //  console.log("Username password do not match");
-  //  alert("username password do not match")
-  //  }
-  //  else{
-  //  console.log("Username does not exists");
-  //  alert("Username does not exist");
-  //  }
-  //  })
-  //  .catch(function (error) {
-  //  console.log(error);
-  //  });
-   }
+   this.props.loginUser(this.state.email, this.state.password).then(()=>this.props.history.push("/profile"));}
 
+  registerLink = (e)=>{
+     e.preventDefault();
+     window.location = 'register';}
 
+  handleOpen = () => {
+     this.setState({open: true});
+     };
 
+  handleClose = () => {
+     this.setState({open: false});
+     };
 
 render() {
-  console.log(this.context.store)
+  const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        disabled={true}
+        onClick={this.handleClose}
+      />,
+    ];
     return (
       <div>
         <MuiThemeProvider>
-          <div>
-          <AppBar
-             title="Login"
+        <div>
+       <RaisedButton label="Modal Dialog" onClick={this.handleOpen} />
+       <Dialog
+         title="Login"
+         actions={actions}
+         modal={true}
+         open={this.state.open}
+       >
+       <TextField
+         hintText="Enter your Email"
+         floatingLabelText="Email"
+         onChange = {(event,newValue) => this.setState({email:newValue})}
+         />
+       <br/>
+         <TextField
+           type="password"
+           hintText="Enter your Password"
+           floatingLabelText="Password"
+           onChange = {(event,newValue) => this.setState({password:newValue})}
            />
+         <br/>
+         <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+         <RaisedButton label="Register" style={style} primary={true} onClick={this.registerLink}/>
+       </Dialog>
+     </div>
+          <div>
+
            <TextField
              hintText="Enter your Email"
              floatingLabelText="Email"
@@ -76,9 +97,16 @@ render() {
                />
              <br/>
              <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-             <RaisedButton label="Fetch User" onClick={() => this.handleFetchUser()}/>
+             <RaisedButton label="Register" style={style} primary={true} onClick={this.registerLink}/>
          </div>
          </MuiThemeProvider>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+         <div>
+         </div>
       </div>
     );
   }
@@ -98,4 +126,4 @@ const mapStateToProps=(state)=>{
   return {current_user:state.currentUser}
 }
 
-export default connect(mapStateToProps, {loginUser: loginUser, fetchUser: fetchUser})(Login)
+export default withRouter(connect(mapStateToProps, {loginUser: loginUser, fetchUser: fetchUser})(Login))
