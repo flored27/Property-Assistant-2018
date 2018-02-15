@@ -74,7 +74,7 @@ render() {
         })
         return (
   <div class="card">
-    
+
     <div class="content">
       <a class="header">
         Apartment: {ap.number}
