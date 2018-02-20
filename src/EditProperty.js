@@ -115,7 +115,7 @@ handleClick = (event) =>{
   event.preventDefault();
   console.log(this.state)
   console.log(this.props)
-  this.props.editProperty(this.state).then((id)=>{this.props.history.push(`/detail/${id}`)});
+  this.props.editProperty(this.state).then((id)=>{this.props.history.push(`/Property-Assistant-2018/detail/${id}`)});
 }
 
 render() {
