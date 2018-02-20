@@ -37,7 +37,7 @@ class App extends Component {
   handleClick = (event) =>{
     event.preventDefault();
     console.log(this.state)
-   this.props.loginUser(this.state.email, this.state.password).then(()=>this.props.history.push("/profile"));
+   this.props.loginUser(this.state.email, this.state.password).then(()=>this.props.history.push("/Property-Assistant-2018/profile"));
    this.setState({
      loginPage: []
    })
@@ -89,14 +89,14 @@ class App extends Component {
           </div>
           <div class="item">
             {this.props.loggedIn ? (
-                <Link to="/contact">Contact</Link>
+                <Link to="/Property-Assistant-2018/contact">Contact</Link>
             ) : (
               ""
             )}
           </div>
           <div class="item">
             {this.props.loggedIn ? (
-                <Link to="/properties">Properties</Link>
+                <Link to="/Property-Assistant-2018/properties">Properties</Link>
             ) : (
               ""
             )}
@@ -104,7 +104,7 @@ class App extends Component {
           <div class="right menu">
           <div class="ui item">
             {this.props.loggedIn ? (
-                <Link to="/profile">Profile</Link>
+                <Link to="/Property-Assistant-2018/profile">Profile</Link>
             ) : (
               ""
             )}
@@ -118,7 +118,7 @@ class App extends Component {
                 }}
               >
                 <Button>
-                <Link to="/">Sign Out</Link>
+                <Link to="/Property-Assistant-2018">Sign Out</Link>
                 </Button>
               </div>
             ) : (
@@ -163,13 +163,13 @@ class App extends Component {
 
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/properties" component={Property} />
-            <Route path="/detail/:id" render={(props)=><PropertyDetail{...props}/>} />
-            <Route path="/new_property" component={NewProperty} />
+            <Route path="/Property-Assistant-2018/profile" component={Profile} />
+            <Route path="/Property-Assistant-2018/properties" component={Property} />
+            <Route path="/Property-Assistant-2018/detail/:id" render={(props)=><PropertyDetail{...props}/>} />
+            <Route path="/Property-Assistant-2018/new_property" component={NewProperty} />
             <Route path="/Property-Assistant-2018/register" component={Register} />
-            <Route path="/contact" component={Message} />
-            <Route path="/edit_property/:id" render={(props)=><EditProperty{...props}/>}/>
+            <Route path="/Property-Assistant-2018/contact" component={Message} />
+            <Route path="/Property-Assistant-2018/edit_property/:id" render={(props)=><EditProperty{...props}/>}/>
             <Route path="/Property-Assistant-2018" component={Initial} />
 
           </Switch>
