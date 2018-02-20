@@ -42,7 +42,7 @@ render() {
                   <br/>
                     <div class="ui button">
                       <i class="edit icon"></i>
-                      <Link to={`/edit_property/${propers.id}`}>Edit</Link>
+                      <Link to={`/Property-Assistant-2018/edit_property/${propers.id}`}>Edit</Link>
                     </div>
                   <br/>
                     <div class="ui button">
