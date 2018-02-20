@@ -111,6 +111,8 @@ render() {
           <h2>{this.state.property.street_address}</h2>
           <h2>{this.state.property.city}</h2>
           <h2>{this.state.property.state}</h2>
+          <h2>Taxes: {this.state.property.taxes}</h2>
+          <h2>Mortgage: {this.state.property.mortgage}</h2>
           </div>
           <br/>
         <div class="ui centered three stackable link cards">
