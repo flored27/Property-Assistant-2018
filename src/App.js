@@ -7,7 +7,6 @@ import Property from './Property';
 import * as actions from './actions';
 import './App.css';
 import { Button} from 'semantic-ui-react'
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import Loginscreen from './Loginscreen'
 import PropertyDetail from './PropertyDetail';
 import NewProperty from './NewProperty';
@@ -21,9 +20,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Initial from './Initial';
 import About from './about';
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
+
 class App extends Component {
   constructor(props){
     super(props);
