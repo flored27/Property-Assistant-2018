@@ -14,8 +14,12 @@ class Initial extends Component {
   }
 
   registerLink = (e)=>{
-     e.preventDefault();
-     window.location = 'register';}
+    e.preventDefault();
+    window.location = 'Property-Assistant-2018/register';}
+  // This is a reference to the path of register:
+  // /Property-Assistant-2018/register, so that the Check us Out button onclick goes to register,
+  // and it works with githubpages due to the need of Property-Assistant-2018 in front of path
+
 render() {
 
 return (
@@ -28,7 +32,7 @@ return (
               <br/>
               <br/>
               <br/>
-              <img class="ui medium rounded centered image" src="logo.png"/>   
+              <img class="ui medium rounded centered image" src="logo.png"/>
               <br/>
               <br/>
               <div class="ui center aligned stackable grid container">

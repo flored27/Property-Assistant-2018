@@ -45,7 +45,7 @@ class App extends Component {
 
   registerLink = (e)=>{
      e.preventDefault();
-     window.location = 'register';}
+     window.location = 'Property-Assistant-2018/register';}
 
   handleOpen = () => {
      this.setState({open: true});
@@ -164,7 +164,7 @@ class App extends Component {
             <Route path="/properties" component={Property} />
             <Route path="/detail/:id" render={(props)=><PropertyDetail{...props}/>} />
             <Route path="/new_property" component={NewProperty} />
-            <Route path="/register" component={Register} />
+            <Route path="/Property-Assistant-2018/register" component={Register} />
             <Route path="/contact" component={Message} />
             <Route path="/edit_property/:id" render={(props)=><EditProperty{...props}/>}/>
             <Route path="/Property-Assistant-2018" component={Initial} />
