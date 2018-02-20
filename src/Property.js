@@ -39,7 +39,7 @@ render() {
 
               <div class="content">
                 <a class="header">
-                  <Link to={`/detail/${propers.id}`}>{propers.name}</Link>
+                  <Link to={`/Property-Assistant-2018/detail/${propers.id}`}>{propers.name}</Link>
                   </a>
                 <div class="meta">
                   <div class="ui button">

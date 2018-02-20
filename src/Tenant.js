@@ -38,7 +38,7 @@ render() {
               <div class="ui segment">
                 <img></img>
                 <h2>
-                  <Link to={`/detail/${propers.id}`}>{propers.name}</Link>
+                  <Link to={`/Property-Assistant-2018/detail/${propers.id}`}>{propers.name}</Link>
                   <br/>
                     <div class="ui button">
                       <i class="edit icon"></i>

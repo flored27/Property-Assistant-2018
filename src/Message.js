@@ -44,7 +44,7 @@ render() {
 
             <div class="content">
               <a class="header">
-              <Link to={`/detail/${propers.id}`}>{propers.name}</Link>
+              <Link to={`/Property-Assistant-2018/detail/${propers.id}`}>{propers.name}</Link>
                 </a>
               <div class="meta">
                 <Modal trigger={<Button><i class="mail icon"></i>Contact </Button>}>
@@ -72,7 +72,7 @@ render() {
                   Phone Number: {propers.phone}
               </div>
             </div>
-            
+
           </div>
         )
       })
