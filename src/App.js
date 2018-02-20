@@ -5,7 +5,6 @@ import Login from './Login';
 import Profile from './Profile';
 import Property from './Property';
 import * as actions from './actions';
-import './App.css';
 import { Button} from 'semantic-ui-react'
 import Loginscreen from './Loginscreen'
 import PropertyDetail from './PropertyDetail';
