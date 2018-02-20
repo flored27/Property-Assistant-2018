@@ -101,7 +101,7 @@ render() {
         <br/>
         <div class="ui icon buttons">
           <button blue class="ui button">
-            <Link to={`/edit_property/${this.state.property.id}`}>
+            <Link to={`/Property-Assistant-2018/edit_property/${this.state.property.id}`}>
             Edit Property: <i class="edit icon"></i>
               </Link>
             </button>
