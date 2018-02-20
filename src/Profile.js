@@ -33,12 +33,12 @@ handleDelete = (event, id) => {
 
                             <div class="content">
                               <a class="header">
-                                <Link to={`/detail/${propers.id}`}>{propers.name}</Link>
+                                <Link to={`/Property-Assistant-2018/detail/${propers.id}`}>{propers.name}</Link>
                                 </a>
                               <div class="meta">
                                 <div class="ui button">
                                   <i class="edit icon"></i>
-                                  <Link to={`/edit_property/${propers.id}`}>Edit</Link>
+                                  <Link to={`/Property-Assistant-2018/edit_property/${propers.id}`}>Edit</Link>
                                 </div>
                                 <br/>
                                 <div class="ui button">
@@ -57,7 +57,7 @@ handleDelete = (event, id) => {
                                     {propers.zip}
                               </div>
                             </div>
-                            
+
                           </div>
 
             )

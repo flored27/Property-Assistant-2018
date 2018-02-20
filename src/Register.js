@@ -21,7 +21,7 @@ class Register extends Component {
       event.preventDefault();
         const fullName = this.state.first_name + " " + this.state.last_name
         console.log(fullName)
-        fetch('http://localhost:3000/landlords', {
+        fetch('https://property-assistant-2018.herokuapp.com/landlords/', {
           method: 'POST',
           headers: {
               'Accept': 'application/json',
