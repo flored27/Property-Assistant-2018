@@ -79,7 +79,7 @@ class App extends Component {
           <div class="item">
           <img class="ui mini circular image" src="logo2.png"/>
 
-                <Link to="/">Home</Link>
+                <Link to="/Property-Assistant-2018">Home</Link>
 
 
 
@@ -167,7 +167,7 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/contact" component={Message} />
             <Route path="/edit_property/:id" render={(props)=><EditProperty{...props}/>}/>
-            <Route path="/" component={Initial} />
+            <Route path="/Property-Assistant-2018" component={Initial} />
 
           </Switch>
       </div>
