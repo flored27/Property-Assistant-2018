@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Link, Switch, Route } from 'react-router-dom';
 import {fetchProperties} from './actions/index';
 
-import './App.css';
 class PropertyDetail extends Component {
   constructor(props){
     super(props);
