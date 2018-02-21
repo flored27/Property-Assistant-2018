@@ -57,19 +57,22 @@ render() {
       const tenants = this.state.tenants.map( (t, index)=> {
         let newTenants = this.state.tenants.slice()
         let tenantToUpdate = newTenants[index]
-        return (
-          <div>
-            {t.name}
-            <br/>
-            {t.phone}
-            <br/>
-            {t.email}
-            <br/>
-            {t.apartment_number}
-            <br/>
-            {t.age}
-          </div>
-          )
+
+        if (t.apartment_id === ap.id) {
+          return (
+            <div>
+              Name: {t.name}
+              <br/>
+              Phone Number: {t.phone}
+              <br/>
+              Email: {t.email}
+              <br/>
+              Age: {t.age}
+              <br/>
+              <br/>
+            </div>
+            )
+          }
         })
         return (
   <div class="card">
