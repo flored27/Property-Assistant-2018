@@ -88,6 +88,31 @@ return (dispatch) => {
 
 export function newProperty(state) {
   console.log(state)
+
+    // This makes sure that the apartment has a number associated with it
+    // before POSTing it to backend
+    function apartmentArray(array) {
+      var newArr = new Array();
+      for (var i = 0; i < array.length; i++) {
+        if (array[i].number) {
+          newArr.push(array[i]);
+        }
+      }
+      return newArr;
+    }
+
+    // This makes sure that the tenant has an apartment number AND a name associated with it
+    // before POSTing it to backend
+    function tenantArray(array) {
+      var newArr = new Array();
+      for (var i = 0; i < array.length; i++) {
+        if (array[i].name && array[i].apartment_number) {
+          newArr.push(array[i]);
+        }
+      }
+      return newArr;
+    }
+
   return (dispatch) => {
     return fetch('https://property-assistant-2018.herokuapp.com/properties', {
       method: 'POST',
@@ -98,8 +123,8 @@ export function newProperty(state) {
       },
       body: JSON.stringify({
         property: state.property,
-        apartments: state.apartments,
-        tenants: state.tenants
+        apartments: apartmentArray(state.apartments),
+        tenants: tenantArray(state.tenants)
       })
     })
     .then(data => data.json())
@@ -113,6 +138,31 @@ export function newProperty(state) {
 
 export function editProperty(state) {
   console.log(state)
+
+  // This makes sure that the apartment has a number associated with it
+  // before POSTing it to backend
+  function apartmentArray(array) {
+    var newArr = new Array();
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].number) {
+        newArr.push(array[i]);
+      }
+    }
+    return newArr;
+  }
+
+  // This makes sure that the tenant has an apartment number AND a name associated with it
+  // before POSTing it to backend
+  function tenantArray(array) {
+    var newArr = new Array();
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].name && array[i].apartment_number) {
+        newArr.push(array[i]);
+      }
+    }
+    return newArr;
+  }
+
   return (dispatch) => {
     return fetch(`https://property-assistant-2018.herokuapp.com/properties/${state.property.id}`, {
       method: 'PATCH',
@@ -123,14 +173,14 @@ export function editProperty(state) {
       },
       body: JSON.stringify({
         property: state.property,
-        tenant: state.tenants,
-        apartment: state.apartments
+        tenant: tenantArray(state.tenants),
+        apartment: apartmentArray(state.apartments)
       })
     })
     .then(data => data.json())
     .then(data=> {
       dispatch({type: "EDIT_PROPERTY", payload: data})
-      console.log(data.Property.id)
+      console.log(data)
       return data.Property.id
 
     })
