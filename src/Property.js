@@ -82,7 +82,7 @@ render() {
 
         <div class="ui icon buttons">
           <button blue class="ui button">
-            <Link to="/new_property">
+            <Link to="/Property-Assistant-2018/new_property">
             New Property: <i class="plus icon"></i>
             </Link>
           </button>
