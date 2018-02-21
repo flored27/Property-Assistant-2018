@@ -34,7 +34,7 @@ is necessary for background image to fit whole page: */
   background:  url("./images/apartment_3.jpg") no-repeat center fixed;
   background-size: cover;
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .Message {
