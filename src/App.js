@@ -162,6 +162,7 @@ class App extends Component {
 
 
           <Switch>
+            <Route path="/loginscreen" component={Loginscreen} />
             <Route path="/login" component={Login} />
             <Route path="/Property-Assistant-2018/profile" component={Profile} />
             <Route path="/Property-Assistant-2018/properties" component={Property} />
