@@ -12,43 +12,15 @@ export const authReducer = (state = {currentUser: {id:null, email: null, phone: 
     case 'ADD_PROPERTY':
       return {...state, currentUser: {...state.currentUser, properties: [...state.currentUser.properties, action.payload.Property], tenants: [...state.currentUser.tenants.concat(action.payload.Tenants)], apartments: [...state.currentUser.apartments.concat(action.payload.Apartments)]}};
     case 'EDIT_PROPERTY':
-    // debugger
-      let newProperties = state.currentUser.properties.slice()
-      let found = newProperties.find(property => {
-        return property.id === action.payload.Property.id
-      })
-      let index = newProperties.indexOf(found)
-      newProperties[index] = action.payload.Property
-
-      // let newApartments = state.currentUser.apartments.slice()
-      // let f_a = newProperties.find(property => {
-      //   return property.id === action.payload.Property.id
-      // })
-      // let index = newProperties.indexOf(found)
-      // newProperties[index] = action.payload.Property
-      //
-      // let newTenants = state.currentUser.tenants.slice()
-      // let f_t = newTenants.find(tenant => {
-      //   return tenant.id === action.payload.Property.id
-      // })
-      // let index = newProperties.indexOf(found)
-      // newProperties[index] = action.payload.Property
-
-      return {...state, currentUser: {...state.currentUser, properties: newProperties}}
+    let newApartments = action.payload.Apartments
+    let newTenants = action.payload.Tenants
+    // the apartments and tenants arrays takes in the updated information from the new apartments and tenants arrays
+    // that comes from the patch request to /properties, to then the payload with the updated information.
+    // The new apartment/tenant arrays include ALL the tenants/apartments for the landlord.
+      return {...state, currentUser: {...state.currentUser, apartments: newApartments, tenants: newTenants}}
     case 'DELETE_PROPERTY':
         return {...state, currentUser: {...state.currentUser, properties: action.payload}};
     default:
       return state;
   }
 }
-
-// export function properties(state = [], action) {
-//     switch (action.type) {
-//         case 'PROPERTIES_FETCH_DATA_SUCCESS':
-//           return action.properties;
-//         case 'ADD_PROPERTY':
-//           return [...state, action.payload]
-//         default:
-//             return state;
-//     }
-// }
