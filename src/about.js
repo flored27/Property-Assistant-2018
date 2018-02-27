@@ -18,7 +18,6 @@ import Message from './Message';
 import EditProperty from './EditProperty';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { withRouter } from 'react-router-dom';
 
