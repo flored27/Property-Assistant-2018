@@ -36,7 +36,7 @@ class Register extends Component {
         })
         .then(data => data.json())
         .then(data=>this.props.setUser(this.state.email, this.state.password))
-        .then(()=>this.props.history.push("/Property-Assistant-2018/profile"));
+        // .then(()=>this.props.history.push("/Property-Assistant-2018/profile"));
   }
 
 
