@@ -62,7 +62,7 @@ return (
                 </div>
                 <div class="row">
                   <div class="center aligned column">
-                    <a onClick={this.registerLink} class="ui huge red button">Check Us Out</a>
+                    <a onClick={this.registerLink} class="ui huge red button">Check Us Out!</a>
                   </div>
                 </div>
               </div>
