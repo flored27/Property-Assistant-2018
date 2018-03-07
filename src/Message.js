@@ -48,7 +48,7 @@ render() {
                 </a>
               <div class="meta">
                 <Modal trigger={<Button><i class="mail icon"></i>Contact </Button>}>
-                  <Modal.Header>Send Email <i class="mail icon"></i></Modal.Header>
+                  <Modal.Header>Send Email Here!<i class="mail icon"></i></Modal.Header>
                   <Modal.Content>
                     <Modal.Description>
                       <Header>{propers.name} </Header>
