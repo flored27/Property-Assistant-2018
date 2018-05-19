@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { withRouter } from 'react-router-dom';
-
-import {fetchProperties} from './actions/index';
-
-import {deleteProperty} from './actions/index';
+import {fetchProperties , deleteProperty} from './actions/index';
 import './initial.css';
 
 
