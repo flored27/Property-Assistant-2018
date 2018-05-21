@@ -58,6 +58,7 @@ class Register extends Component {
              type="email"
              floatingLabelText="Email"
              onChange = {(event,newValue) => this.setState({email:newValue})}
+             onBlur = {(event)=>this.handleOnBlur(event)}
              />
            <br/>
            <TextField
