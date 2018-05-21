@@ -38,6 +38,81 @@ export function fetchUser() {
   }
 }
 
+export function findUser(state) {
+  return (dispatch) => {
+    return fetch('https://property-assistant-2018.herokuapp.com/find', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      body: JSON.stringify({email: state.email})
+    })
+    .then(data => data.json())
+    .then(data => {
+      if(data.message === "All good! Landlord email is not in database."){
+     // .then(data=> console.log(data))
+     // .then(data=>this.props.setUser(this.state.email, this.state.password))
+     console.log("All good! Landlord email is not in database.")
+     dispatch(registerUser(state))
+      }
+      else {
+        alert("Email is already used. Please revise, or log in!")
+        console.log("Landlord already exists!")
+      }
+    })
+    }
+  }
+
+export function checkUser(email) {
+    return (dispatch) => {
+      return fetch('https://property-assistant-2018.herokuapp.com/find', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        body: JSON.stringify({email: email})
+      })
+      .then(data => data.json())
+      .then(data => {
+        if(data.message === "All good! Landlord email is not in database."){
+       // .then(data=> console.log(data))
+       // .then(data=>this.props.setUser(this.state.email, this.state.password))
+       console.log("All good! Landlord email is not in database.")
+        }
+        else {
+          alert("Email is already used. Please revise, or log in!")
+          console.log("Landlord already exists!")
+        }
+      })
+      }
+  }
+
+export function registerUser(state) {
+  return (dispatch) => {
+    const fullName = state.first_name + " " + state.last_name
+
+      fetch('https://property-assistant-2018.herokuapp.com/landlords/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        body: JSON.stringify({
+          landlord: {name: fullName,
+          email: state.email,
+          phone: state.phone,
+          password: state.password}
+        })
+      })
+      .then(()=>dispatch(setUser(state.email, state.password)))
+      .then(()=>history.push('/Property-Assistant-2018/profile'));
+  }
+}
+
+
+
 // export const loginUser = (username, password, history) => dispatch => {
 //   dispatch({ type: 'ASYNC_START' });
 
@@ -69,7 +144,7 @@ export function fetchUser() {
 }
 
 export function setUser(email, password) {
-  console.log(email, password)
+  console.log("in Set User")
 return (dispatch) => {
   fetch('https://property-assistant-2018.herokuapp.com/login', {
     method: 'POST',
