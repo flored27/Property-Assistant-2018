@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, Router } from 'react-router-dom';
+import history from './history'
 import { connect } from 'react-redux';
 import Login from './Login';
 import Profile from './Profile';
@@ -67,7 +68,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+
     const actions = [
         <FlatButton
           label="Cancel"
@@ -160,7 +161,7 @@ class App extends Component {
 
 
 
-
+        <Router history={history}>
           <Switch>
             <Route path="/loginscreen" component={Loginscreen} />
             <Route path="/login" component={Login} />
@@ -174,6 +175,8 @@ class App extends Component {
             <Route path="/Property-Assistant-2018" component={Initial} />
 
           </Switch>
+          </Router>
+
       </div>
     );
   }
