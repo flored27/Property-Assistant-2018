@@ -17,27 +17,15 @@ class Register extends Component {
     }
   }
     handleClick = (event) => {
-      console.log(this.state)
       event.preventDefault();
-        const fullName = this.state.first_name + " " + this.state.last_name
-        console.log(fullName)
-        fetch('https://property-assistant-2018.herokuapp.com/landlords/', {
-          method: 'POST',
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            },
-          body: JSON.stringify({
-            landlord: {name: fullName,
-            email: this.state.email,
-            phone: this.state.phone,
-            password: this.state.password}
-          })
-        })
-        .then(data => data.json())
-        .then(data=>this.props.setUser(this.state.email, this.state.password))
-        .then(()=>this.props.history.push("/Property-Assistant-2018/profile"));
-  }
+      this.props.findUser(this.state)
+    }
+
+    handleOnBlur = (event) => {
+      event.preventDefault();
+      this.props.checkUser(this.state.email)
+    }
+
 
 
   render() {
