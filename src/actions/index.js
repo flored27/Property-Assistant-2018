@@ -1,4 +1,5 @@
 import { adapter } from '../services';
+import history from '../history';
 
 // export const fetchUser = () => dispatch => {
 //   dispatch({ type: 'ASYNC_START' });
