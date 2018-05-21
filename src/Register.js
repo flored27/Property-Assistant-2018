@@ -90,4 +90,11 @@ const mapStateToProps=(state)=>{
   return {current_user:state.currentUser}
 }
 
-export default connect(mapStateToProps, {setUser: setUser})(Register)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    findUser: (state) => dispatch(findUser(state)),
+    checkUser: (email) => dispatch(checkUser(email))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
