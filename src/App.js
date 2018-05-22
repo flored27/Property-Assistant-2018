@@ -38,7 +38,7 @@ class App extends Component {
   handleClick = (event) =>{
     event.preventDefault();
     console.log(this.state)
-   this.props.loginUser(this.state.email, this.state.password).then(()=>this.props.history.push("/Property-Assistant-2018/profile"));
+   this.props.loginUser(this.state.email, this.state.password).then(()=>history.push("/Property-Assistant-2018/profile"));
    this.setState({
      loginPage: []
    })
