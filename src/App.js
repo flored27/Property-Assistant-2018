@@ -78,11 +78,11 @@ class App extends Component {
         ];
 
     return (
+      <Router history={history}>
       <div className="App">
         <div id="navbar" class="ui fixed sticky blue inverted menu">
           <div class="item">
           <img class="ui mini circular image" src="logo2.png"/>
-
                 <Link to="/Property-Assistant-2018">Home</Link>
 
 
@@ -161,11 +161,10 @@ class App extends Component {
 
 
 
-        <Router history={history}>
-          <Switch>
+        <Switch>
+          <Route path="/Property-Assistant-2018/profile" component={Profile} />
             <Route path="/loginscreen" component={Loginscreen} />
             <Route path="/login" component={Login} />
-            <Route path="/Property-Assistant-2018/profile" component={Profile} />
             <Route path="/Property-Assistant-2018/properties" component={Property} />
             <Route path="/Property-Assistant-2018/detail/:id" render={(props)=><PropertyDetail{...props}/>} />
             <Route path="/Property-Assistant-2018/new_property" component={NewProperty} />
@@ -175,9 +174,9 @@ class App extends Component {
             <Route path="/Property-Assistant-2018" component={Initial} />
 
           </Switch>
-          </Router>
 
       </div>
+      </Router>
     );
   }
 }
