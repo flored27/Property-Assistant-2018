@@ -171,7 +171,7 @@ class App extends Component {
             <Route path="/Property-Assistant-2018/register" component={Register} />
             <Route path="/Property-Assistant-2018/contact" component={Message} />
             <Route path="/Property-Assistant-2018/edit_property/:id" render={(props)=><EditProperty{...props}/>}/>
-            <Route path="/" component={Initial} />
+            <Route path="/Property-Assistant-2018" component={Initial} />
 
           </Switch>
 
