@@ -17,7 +17,7 @@ is necessary for background image to fit whole page: */
 }
 
 .Profile {
-  background:  url("./images/bw_buildings.jpg") no-repeat  center fixed;
+  background:  url("./images/profile_background.jpg") no-repeat  center fixed;
   background-size: cover;
   height: 100%;
   overflow: scroll;
