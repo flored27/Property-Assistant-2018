@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-
+// import { withStyles } from 'material-ui/styles';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import MenuItem from 'material-ui/MenuItem';
+import SelectField from 'material-ui/SelectField'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -10,7 +11,25 @@ import { withRouter } from 'react-router-dom';
 import './initial.css';
 import {newProperty} from './actions/index';
 import { connect } from 'react-redux';
-import './initial.css';
+
+const currencies = [
+  {
+    value: 'USD',
+    label: '$',
+  },
+  {
+    value: 'EUR',
+    label: '€',
+  },
+  {
+    value: 'BTC',
+    label: '฿',
+  },
+  {
+    value: 'JPY',
+    label: '¥',
+  },
+];
 class NewProperty extends Component {
 
   constructor(props){
@@ -206,12 +225,14 @@ handleClick = (event) =>{
           })}
           />
         <br/>
-        <TextField
+        <SelectField
+        Select
+        label="Select"
         className= "textfield2"
         errorText = {this.state.errorTextTAN}
-          value={t.apartment_number}
-          floatingLabelText="Tenant Apartment Number"
-          onChange = {(event,newValue) => {
+        value={t.apartment_number}
+        floatingLabelText="Tenant Apartment"
+        onChange = {(event,newValue) => {
             {event.target.value?(
               console.log("Hello"),
                 this.setState({
@@ -232,7 +253,13 @@ handleClick = (event) =>{
             tenants: newTenants
             }
           })}}
-          />
+          >
+          {this.state.apartments.map(apartment => (
+            <MenuItem key={apartment.number} value={apartment.number}>
+              {apartment.number}
+            </MenuItem>
+          ))}
+          </SelectField>
         <br/>
         <TextField
         className= "textfield2"
