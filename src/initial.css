@@ -85,3 +85,12 @@ is necessary for background image to fit whole page: */
 .textfield2 {
   right: 400px;
 }
+
+.register__textField {
+  background-color: white;
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+
+}

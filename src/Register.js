@@ -40,7 +40,7 @@ class Register extends Component {
         </h1>
       </div>
         <MuiThemeProvider>
-          <div>
+          <div class="register__textField">
            <TextField
              hintText="Enter your First Name"
              floatingLabelText="First Name"
