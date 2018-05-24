@@ -1,0 +1,96 @@
+/*class App is within App.js, points to the navbar
+is necessary for background image to fit whole page: */
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+.initial {
+    background:  url("./images/apartment_4.jpg") no-repeat center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+#navbar {
+  background-color: transparent
+}
+
+.Profile {
+  background:  url("./images/profile_background.jpg") no-repeat  center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: scroll;
+}
+
+.NewP {
+  background:  url("./images/white_b.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: scroll;
+}
+
+.Register {
+  background:  url("./images/apartment_3.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: scroll;
+}
+
+.Message {
+  background:  url("./images/apartments_2.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: scroll;
+}
+
+
+.PropertyList {
+  background:  url("./images/apartment5.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: scroll;
+}
+
+.textfield2 {
+        margin-left: 100%;
+}
+
+.textfield1 {
+        margin-left: 50%;
+}
+
+.textfield3 {
+        margin-left: 30%;
+}
+
+.textfield4 {
+        margin-left: 70%;
+}
+
+.EditP {
+  background:  url("./images/bwarchitecture.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: scroll;
+}
+
+.Detail {
+  background:  url("./images/apartments.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: scroll;
+}
+
+.textfield2 {
+  right: 400px;
+}
+
+.register__textField {
+  background-color: white;
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+
+}
