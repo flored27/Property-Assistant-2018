@@ -3,6 +3,10 @@
   "name": "projectmanager",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "3.10.10",
+    "node": "6.13.1"
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "history": "^4.7.2",
