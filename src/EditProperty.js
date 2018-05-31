@@ -220,24 +220,22 @@ render() {
         })}
         />
       <br/>
-      <TextField
-        errorText = {this.state.errorTextTAN}
-        value={t.apartment_number}
-        floatingLabelText="Tenant Apartment Number"
-        onChange = {(event,newValue) => {
-
-          {event.target.value?(
+      <SelectField
+      errorText = {this.state.errorTextTAN}
+      value={t.apartment_number}
+      floatingLabelText="Tenant Apartment"
+      onChange = {(event, index, newValue) => {
+          {newValue?(
             console.log("Hello"),
               this.setState({
                 errorTextTAN: ""
               })
           ) : (
-            console.log("goodbye"),
+            console.log(newValue),
             this.setState({
               errorTextTAN: "This field is required"
             })
           )}
-
           this.setState(prevState => {
 
           tenantToUpdate.apartment_number = newValue
@@ -247,7 +245,11 @@ render() {
           tenants: newTenants
           }
         })}}
-        />
+        >
+        {this.state.apartments.map(apartment => (
+          <MenuItem value={apartment.number} primaryText={apartment.number}/>
+        ))}
+        </SelectField>
       <br/>
       <TextField
         value={t.phone}
@@ -480,7 +482,7 @@ margin: 15
 };
 
 const mapStateToProps=(state)=>{
-console.log(state)
+console.log(this.props)
 return {current_user:state.auth.currentUser}
 }
 //
