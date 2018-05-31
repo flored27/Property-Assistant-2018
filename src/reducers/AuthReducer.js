@@ -19,7 +19,7 @@ export const authReducer = (state = {currentUser: {id:null, email: null, phone: 
     // The new apartment/tenant arrays include ALL the tenants/apartments for the landlord.
       return {...state, currentUser: {...state.currentUser, apartments: newApartments, tenants: newTenants}}
     case 'DELETE_PROPERTY':
-        return {...state, currentUser: {...state.currentUser, properties: action.payload}};
+        return {...state, currentUser: {...state.currentUser, properties: action.payload.Property, apartments: action.payload.Apartments, tenants: action.payload.Tenants}};
     default:
       return state;
   }
