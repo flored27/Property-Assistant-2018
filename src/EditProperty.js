@@ -39,7 +39,9 @@ class EditProperty extends Component {
         email: "",
         id: null,
         apartment_id: null,
-        apartment_number: null
+        apartment_number: null,
+        property_id: null,
+        landlord_id: null
       }],
       errorTextA: "",
       errorTextTN: "",
