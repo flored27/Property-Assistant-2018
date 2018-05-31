@@ -77,13 +77,13 @@ handleClick = (event) =>{
   event.preventDefault();
   console.log(this.state)
   console.log(this.props)
-  this.props.newProperty(this.state).then((id)=>{this.props.history.push(`/Property-Assistant-2018/detail/${id}`)});
+  this.props.newProperty(this.state).then((id)=>{this.props.history.push(`/detail/${id}`)});
  }
 
  addApartmentForm=(event)=>{
   event.preventDefault();
   let newApartments = this.state.apartments.slice();
- newApartments.push({ number: null, property_id: this.state.property.id, id: null});
+ newApartments.push({ number: null, property_id: this.state.property.id, id: null, landlord_id: this.props.current_user.id});
  this.setState(prevState => ({
   ...prevState,
   apartments: newApartments
