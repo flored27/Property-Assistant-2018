@@ -57,50 +57,79 @@ componentDidMount(props){
 }
    handleContact = (event, tenant_email) => {
      event.preventDefault();
-     console.log("hello")
+     console.log("hello ", tenant_email)
+     this.handleClose()
      this.props.sendEmail(this.state, tenant_email)
     //  .then(()=>{this.props.history.push(`/properties`)});
    }
 
+   handleClickOpen = (event, name, email) => {
+    this.setState({open: true});
+    this.setState({tenant_name: name});
+    this.setState({tenant_email: email});
+    console.log(this.state);
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+
 render() {
   console.log(this.state)
+
+
   const propers = this.props.currentUser.tenants.map( (propers, i) => {
     // let link = "details/"+props.id
+    console.log(propers)
+    const name = propers.name;
+    console.log(name)
         return (
-          <div class="card">
 
-            <div class="content">
-              <a class="header">
-              <Link to={`/Property-Assistant-2018/detail/${propers.id}`}>{propers.name}</Link>
+
+            <div class="card">
+              <div class="content">
+                <a class="header">
+                  <Link to={`/detail/${propers.property_id}`}>{propers.name}</Link>
                 </a>
-              <div class="meta">
-                <Modal trigger={<Button><i class="mail icon"></i>Contact </Button>}>
-                  <Modal.Header>Send Email Here!<i class="mail icon"></i></Modal.Header>
-                  <Modal.Content>
-                    <Modal.Description>
-                      <Header>{propers.name} </Header>
-                      <div class="ui large form">
-                        <div class="big field">
-                          <label>Text</label>
-                          <textarea column="20" defaultValue={`Hello ${propers.name},`}
+
+                  <Button onClick={(event)=>this.handleClickOpen(event, propers.name, propers.email)} color="primary">Contact</Button>
+                    <Dialog
+                      modal={true}
+                      open={this.state.open}
+                      onClose={this.handleClose}
+                      title={propers.name}
+                    >
+                    <DialogTitle id="form-dialog-title">Compose Message to:</DialogTitle>
+                    <DialogContent>
+
+                    <h1>{this.state.tenant_name}</h1>
+                    <div class="ui large form">
+                      <div class="big field">
+                        <label>{this.state.tenant_email}</label>
+                          <textarea cols="50" rows="25" defaultValue={`Hello ${this.state.tenant_name},`}
                           onChange = {(event) => this.setState({message:event.target.value})}
-                          ></textarea>
-                        </div>
+                          />
                       </div>
-                      <br/>
-                      <button onClick={(event)=>this.handleContact(event, propers.email)}>Send</button>
-                    </Modal.Description>
-                  </Modal.Content>
-                </Modal>
-              </div>
-              <div class="description" textAlign='center'>
+                    </div>
+                    </DialogContent>
+                    <DialogActions>
+                    <Button onClick={this.handleClose} color="primary">
+                      Cancel
+                    </Button>,
+                    <Button onClick={(event)=>this.handleContact(event, this.state.tenant_email)} color="primary">
+                      Submit
+                    </Button>
+                    </DialogActions>
+                    </Dialog>
+
+                <div class="description" textAlign='center'>
                   Email: {propers.email}
                   <br/>
                   Phone Number: {propers.phone}
+                </div>
               </div>
             </div>
 
-          </div>
         )
       })
 
