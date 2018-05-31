@@ -30,14 +30,15 @@ class PropertyDetail extends Component {
         email: "",
         id: null,
         apartment_id: null,
-        apartment_number: null
+        apartment_number: null,
+        property_id: null
       }]
     }
   }
 
 
   componentDidMount(props){
-  fetch(`https://property-assistant-2018.herokuapp.com/properties/${this.props.match.params.id}`)
+  fetch(`https://property-assistant-backend.herokuapp.com/properties/${this.props.match.params.id}`)
   .then(data => data.json())
   .then(data=> {
     this.setState({
