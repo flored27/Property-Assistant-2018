@@ -35,12 +35,12 @@ render() {
 
               <div class="content">
                 <a class="header">
-                  <Link to={`/Property-Assistant-2018/detail/${propers.id}`}>{propers.name}</Link>
+                  <Link to={`/detail/${propers.id}`}>{propers.name}</Link>
                   </a>
                 <div class="meta">
                   <div class="ui button">
                     <i class="edit icon"></i>
-                    <Link to={`/Property-Assistant-2018/edit_property/${propers.id}`}>Edit</Link>
+                    <Link to={`/edit_property/${propers.id}`}>Edit</Link>
                   </div>
                   <br/>
                   <div class="ui button">
@@ -78,7 +78,7 @@ render() {
 
         <div class="ui icon buttons">
           <button blue class="ui button">
-            <Link to="/Property-Assistant-2018/new_property">
+            <Link to="/new_property">
             New Property: <i class="plus icon"></i>
             </Link>
           </button>
