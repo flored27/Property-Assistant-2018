@@ -71,7 +71,7 @@ componentDidMount(props){
 addApartmentForm=(event)=>{
  event.preventDefault();
  let newApartments = this.state.apartments.slice();
-newApartments.push({ number: null, property_id: this.state.property.id, id: null});
+newApartments.push({ number: null, property_id: this.state.property.id, id: null, landlord_id: this.props.current_user.id});
 this.setState(prevState => ({
  ...prevState,
  apartments: newApartments
