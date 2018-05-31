@@ -40,7 +40,7 @@ class App extends Component {
   handleClick = (event) =>{
     event.preventDefault();
     console.log(this.state)
-   this.props.loginUser(this.state.email, this.state.password).then(()=>history.push("/Property-Assistant-2018/profile"));
+   this.props.loginUser(this.state.email, this.state.password).then(()=>history.push("/profile"));
    this.setState({
      loginPage: []
    })
@@ -48,10 +48,10 @@ class App extends Component {
 
   registerLink = (e)=>{
      e.preventDefault();
-     window.location = 'Property-Assistant-2018/register';}
+     window.location = '/register';}
      // This is a reference to the path of register:
-     // /Property-Assistant-2018/register, so that the Login/Register onclick goes to register,
-     // and it works with githubpages due to the need of Property-Assistant-2018 in front of path
+     // //register, so that the Login/Register onclick goes to register,
+     // and it works with githubpages due to the need of  in front of path
 
   handleOpen = () => {
      this.setState({open: true});
@@ -107,7 +107,7 @@ class App extends Component {
           <div class="right menu">
           <div class="ui item">
             {this.props.loggedIn ? (
-                <Link to="/Property-Assistant-2018/profile">Profile</Link>
+                <Link to="/profile">Profile</Link>
             ) : (
               ""
             )}
