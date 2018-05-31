@@ -82,24 +82,25 @@ class App extends Component {
     return (
       <Router history={history}>
       <div className="App">
+      <MuiThemeProvider>
         <div id="navbar" class="ui fixed sticky blue inverted menu">
           <div class="item">
           <img class="ui mini circular image" src="logo2.png"/>
-                <Link to="/Property-Assistant-2018">Home</Link>
+                <Link to="/">Home</Link>
 
 
 
           </div>
           <div class="item">
             {this.props.loggedIn ? (
-                <Link to="/Property-Assistant-2018/contact">Contact</Link>
+                <Link to="/contact">Contact</Link>
             ) : (
               ""
             )}
           </div>
           <div class="item">
             {this.props.loggedIn ? (
-                <Link to="/Property-Assistant-2018/properties">Properties</Link>
+                <Link to="/properties">Properties</Link>
             ) : (
               ""
             )}
@@ -120,13 +121,13 @@ class App extends Component {
                   this.props.logoutUser();
                 }}
               >
-                <Button>
-                <Link to="/Property-Assistant-2018">Sign Out</Link>
-                </Button>
+                <FlatButton>
+                <Link to="/">Sign Out</Link>
+                </FlatButton>
               </div>
             ) : (
               <div>
-                <MuiThemeProvider>
+
                 <div>
                <RaisedButton label="Login" onClick={this.handleOpen} />
                <Dialog
@@ -154,7 +155,7 @@ class App extends Component {
                  <RaisedButton label="Register" style={style} primary={true} onClick={this.registerLink}/>
                </Dialog>
              </div>
-             </MuiThemeProvider>
+
           </div>
             )}
             </div>
@@ -164,20 +165,21 @@ class App extends Component {
 
 
         <Switch>
-          <Route path="/Property-Assistant-2018/profile" component={Profile} />
+          <Route path="/profile" component={Profile} />
             <Route path="/loginscreen" component={Loginscreen} />
             <Route path="/login" component={Login} />
-            <Route path="/Property-Assistant-2018/properties" component={Property} />
-            <Route path="/Property-Assistant-2018/detail/:id" render={(props)=><PropertyDetail{...props}/>} />
-            <Route path="/Property-Assistant-2018/new_property" component={NewProperty} />
-            <Route path="/Property-Assistant-2018/register" component={Register} />
-            <Route path="/Property-Assistant-2018/contact" component={Message} />
-            <Route path="/Property-Assistant-2018/edit_property/:id" render={(props)=><EditProperty{...props}/>}/>
-            <Route path="/Property-Assistant-2018" component={Initial} />
+            <Route path="/properties" component={Property} />
+            <Route path="/detail/:id" render={(props)=><PropertyDetail{...props}/>} />
+            <Route path="/new_property" component={NewProperty} />
+            <Route path="/register" component={Register} />
+            <Route path="/contact" component={Message} />
+            <Route path="/edit_property/:id" render={(props)=><EditProperty{...props}/>}/>
+            <Route path="/" component={Initial} />
 
           </Switch>
-
+</MuiThemeProvider>
       </div>
+
       </Router>
     );
   }
