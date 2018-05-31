@@ -12,28 +12,11 @@ import './initial.css';
 import {newProperty} from './actions/index';
 import { connect } from 'react-redux';
 
-const currencies = [
-  {
-    value: 'USD',
-    label: '$',
-  },
-  {
-    value: 'EUR',
-    label: '€',
-  },
-  {
-    value: 'BTC',
-    label: '฿',
-  },
-  {
-    value: 'JPY',
-    label: '¥',
-  },
-];
 class NewProperty extends Component {
 
   constructor(props){
     super(props);
+    console.log(props.current_user)
     this.state={
       property: {
         taxes:'',
@@ -123,7 +106,6 @@ handleClick = (event) =>{
      }
    })
  }
-
 
   render() {
     console.log(this.state)
@@ -229,20 +211,18 @@ handleClick = (event) =>{
           />
         <br/>
         <SelectField
-        Select
-        label="Select"
         className= "textfield2"
         errorText = {this.state.errorTextTAN}
         value={t.apartment_number}
         floatingLabelText="Tenant Apartment"
-        onChange = {(event,newValue) => {
-            {event.target.value?(
+        onChange = {(event, index, newValue) => {
+            {newValue?(
               console.log("Hello"),
                 this.setState({
                   errorTextTAN: ""
                 })
             ) : (
-              console.log("goodbye"),
+              console.log(newValue),
               this.setState({
                 errorTextTAN: "This field is required"
               })
@@ -258,9 +238,7 @@ handleClick = (event) =>{
           })}}
           >
           {this.state.apartments.map(apartment => (
-            <MenuItem key={apartment.number} value={apartment.number}>
-              {apartment.number}
-            </MenuItem>
+            <MenuItem value={apartment.number} primaryText={apartment.number}/>
           ))}
           </SelectField>
         <br/>
