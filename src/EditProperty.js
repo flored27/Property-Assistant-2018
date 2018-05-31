@@ -29,7 +29,8 @@ class EditProperty extends Component {
       apartments: [{
         number: null,
         property_id: null,
-        id: null
+        id: null,
+        landlord_id: null
       }],
       tenants: [{
         name: "",
