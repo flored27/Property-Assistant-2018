@@ -6,7 +6,8 @@ import Login from './Login';
 import Profile from './Profile';
 import Property from './Property';
 import * as actions from './actions';
-import { Button} from 'semantic-ui-react'
+
+
 import Loginscreen from './Loginscreen'
 import PropertyDetail from './PropertyDetail';
 import NewProperty from './NewProperty';
@@ -15,6 +16,7 @@ import Message from './Message';
 import EditProperty from './EditProperty';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
