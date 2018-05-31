@@ -15,7 +15,7 @@ class Initial extends Component {
 
   registerLink = (e)=>{
     e.preventDefault();
-    window.location = 'Property-Assistant-2018/register';}
+    window.location = '/register';}
   // This is a reference to the path of register:
   // /Property-Assistant-2018/register, so that the Check us Out button onclick goes to register,
   // and it works with githubpages due to the need of Property-Assistant-2018 in front of path
