@@ -8,7 +8,6 @@ import * as actions from './actions';
 import logo from './logo.svg';
 import './initial.css';
 import { Button, Icon, Header, Image, Modal } from 'semantic-ui-react'
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import Loginscreen from './Loginscreen'
 import Navbar from './containers/navbar'
 import PropertyDetail from './PropertyDetail';
