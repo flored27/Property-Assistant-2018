@@ -25,7 +25,7 @@ export function fetchProperties(url) {
 
 export function fetchUser() {
   return (dispatch) => {
-    fetch('https://property-assistant-2018.herokuapp.com/current_user', {
+    fetch('https://property-assistant-backend.herokuapp.com/current_user', {
       method: 'GET',
       headers: {
           'Authorization': localStorage.getItem('token')
@@ -40,7 +40,7 @@ export function fetchUser() {
 
 export function findUser(state) {
   return (dispatch) => {
-    return fetch('https://property-assistant-2018.herokuapp.com/find', {
+    return fetch('https://property-assistant-backend.herokuapp.com/find', {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -66,7 +66,7 @@ export function findUser(state) {
 
 export function checkUser(email) {
     return (dispatch) => {
-      return fetch('https://property-assistant-2018.herokuapp.com/find', {
+      return fetch('https://property-assistant-backend.herokuapp.com/find', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -93,7 +93,7 @@ export function registerUser(state) {
   return (dispatch) => {
     const fullName = state.first_name + " " + state.last_name
 
-      fetch('https://property-assistant-2018.herokuapp.com/landlords/', {
+      fetch('https://property-assistant-backend.herokuapp.com/landlords/', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -107,7 +107,7 @@ export function registerUser(state) {
         })
       })
       .then(()=>dispatch(setUser(state.email, state.password)))
-      .then(()=>history.push('/Property-Assistant-2018/profile'));
+      .then(()=>history.push('/profile'));
   }
 }
 
@@ -127,7 +127,7 @@ export function registerUser(state) {
   export function loginUser(email, password) {
     console.log(email, password)
   return (dispatch) => {
-    return fetch('https://property-assistant-2018.herokuapp.com/login', {
+    return fetch('https://property-assistant-backend.herokuapp.com/login', {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -146,7 +146,7 @@ export function registerUser(state) {
 export function setUser(email, password) {
   console.log("in Set User")
 return (dispatch) => {
-  fetch('https://property-assistant-2018.herokuapp.com/login', {
+  fetch('https://property-assistant-backend.herokuapp.com/login', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -190,7 +190,7 @@ export function newProperty(state) {
     }
 
   return (dispatch) => {
-    return fetch('https://property-assistant-2018.herokuapp.com/properties', {
+    return fetch('https://property-assistant-backend.herokuapp.com/properties', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -240,7 +240,7 @@ export function editProperty(state) {
   }
 
   return (dispatch) => {
-    return fetch(`https://property-assistant-2018.herokuapp.com/properties/${state.property.id}`, {
+    return fetch(`https://property-assistant-backend.herokuapp.com/properties/${state.property.id}`, {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -264,10 +264,11 @@ export function editProperty(state) {
 }
 
 export function sendEmail(state, tenant_email) {
-  console.log(state)
+  console.log("state", state)
+  console.log("tenant email", tenant_email)
   return (dispatch) => {
-    return fetch(`https://property-assistant-2018.herokuapp.com/landlords/${state.landlord_id}`, {
-      method: 'PATCH',
+    return fetch(`https://property-assistant-backend.herokuapp.com/message`, {
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -275,18 +276,19 @@ export function sendEmail(state, tenant_email) {
       },
       body: JSON.stringify({
         message: state.message,
-        message_email:tenant_email
+        message_email:tenant_email,
+        id: state.landlord_id
       })
     })
-    .then(data => data.json())
-    .then(data=> console.log(data))
+    // .then(data => data.json())
+    // .then(data=> console.log(data))
   }
 }
 
 export function deleteProperty(id) {
   console.log("ID ",id)
   return (dispatch) => {
-     fetch(`https://property-assistant-2018.herokuapp.com/properties/${id}`, {
+     fetch(`https://property-assistant-backend.herokuapp.com/properties/${id}`, {
       method: 'DELETE',
       })
       .then(data => data.json())
@@ -299,7 +301,7 @@ export function deleteProperty(id) {
 
 export function deleteApartment(id) {
   return (dispatch) => {
-     fetch(`https://property-assistant-2018.herokuapp.com/apartments/${id}`, {
+     fetch(`https://property-assistant-backend.herokuapp.com/apartments/${id}`, {
       method: 'DELETE',
       })
   }
@@ -309,7 +311,7 @@ export function deleteApartment(id) {
 export function deleteTenant(id) {
   console.log("ID ",id)
   return (dispatch) => {
-     fetch(`https://property-assistant-2018.herokuapp.com/tenants/${id}`, {
+     fetch(`https://property-assistant-backend.herokuapp.com/tenants/${id}`, {
       method: 'DELETE',
     })
   }
