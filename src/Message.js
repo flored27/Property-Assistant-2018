@@ -1,27 +1,54 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import Button from '@material-ui/core/Button';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import { withRouter } from 'react-router-dom';
-
 import {fetchProperties} from './actions/index';
 import './initial.css';
-import { Button } from 'semantic-ui-react'
 import {deleteProperty} from './actions/index';
-import { Header, Modal } from 'semantic-ui-react'
 import {sendEmail} from './actions/index';
+import { Header} from 'semantic-ui-react'
 
 class Message extends Component {
 constructor(props){
   super(props);
   this.state={
+  tenant_name: '',
   landlord_email:'',
   tenant_email:'',
   message: '',
-  landlord_id: null
+  landlord_id: null,
+  open: false
   }
 }
 
+
+// <Modal trigger={<FlatButton><i class="mail icon"></i>Contact </FlatButton>}>
+//   <Modal.Header>Send Email Here!<i class="mail icon"></i></Modal.Header>
+//   <Modal.Content>
+//     <Modal.Description>
+//       <Header>{propers.name} </Header>
+//       <div class="ui large form">
+//         <div class="big field">
+//           <label>Text</label>
+//           <textarea column="20" defaultValue={`Hello ${propers.name},`}
+//           onChange = {(event) => this.setState({message:event.target.value})}
+//           ></textarea>
+//         </div>
+//       </div>
+//       <br/>
+//       <button onClick={(event)=>this.handleContact(event, propers.email)}>Send</button>
+//     </Modal.Description>
+//   </Modal.Content>
+// </Modal>
 componentDidMount(props){
   this.setState({
     landlord_email: this.props.currentUser.email,
