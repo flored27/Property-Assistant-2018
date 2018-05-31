@@ -57,7 +57,7 @@ class EditProperty extends Component {
 
 
 componentDidMount(props){
-  fetch(`https://property-assistant-2018.herokuapp.com/properties/${this.props.match.params.id}`)
+  fetch(`https://property-assistant-backend.herokuapp.com/properties/${this.props.match.params.id}`)
   .then(data => data.json())
   .then(data=> {
     this.setState({
