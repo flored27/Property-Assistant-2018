@@ -82,7 +82,7 @@ this.setState(prevState => ({
 addTenantForm=(event)=>{
  event.preventDefault();
  let newTenants = this.state.tenants.slice();
-newTenants.push({ name: "", age: null, phone: "", email: "", apartment_id: null, id: null, apartment_number: null })
+newTenants.push({ name: "", age: null, phone: "", email: "", apartment_id: null, id: null, apartment_number: null, property_id: this.state.property.id, landlord_id: this.props.current_user.id})
 this.setState(prevState => ({
   ...prevState,
     tenants: newTenants
