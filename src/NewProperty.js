@@ -57,7 +57,9 @@ class NewProperty extends Component {
         email: "",
         apartment_id: null,
         apartment_number: null,
-        id: null
+        property_id: null,
+        id: null,
+        landlord_id: null
       }],
       errorTextA: "This field is required",
       errorTextTN: "This field is required",
