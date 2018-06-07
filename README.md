@@ -3,7 +3,7 @@
 
 Property Assistant 2018 is a property management app that allows landlords to keep track of their assets and communicate with tenants. This repository shows the front-end files for the web app.
 
-Property Assistant 2018 is built with Javascript, React, and Redux, as well as HTML5 and CSS3. It also uses [Material UI](https://material-ui.com/) components that implement Google's Material design for the styling.
+Property Assistant 2018 front-end is built with Javascript, React, and Redux, as well as HTML5 and CSS3. It also uses [Material UI](https://material-ui.com/) components that implement Google's Material design for the styling.
 
 The back end of this repository can be found [here](https://github.com/flored27/Property-Assistant-Backend)<br/>
 The demo for this repository can be found [here](https://property-assistant-2018.herokuapp.com/)<br/>
