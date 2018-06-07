@@ -22,3 +22,10 @@ To use, just register with an email and password, and you will be logged in righ
 * HTML5
 * Reactjs
 * Redux
+
+## Back-end built with:
+* Ruby on Rails
+* PostgreSQL
+* ActionMailer
+* SendGrid
+* Heroku
