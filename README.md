@@ -1,4 +1,5 @@
 # Property Assistant 2018
+<h1 align=center><img src="/src/images/logo.png" alt="Property Assistant 2018 logo" /></h1>
 
 Property Assistant 2018 is a property management app that allows landlords to keep track of their assets and communicate with tenants. This repository shows the front-end files for the web app.
 
