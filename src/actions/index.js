@@ -1,26 +1,20 @@
 import { adapter } from '../services';
 import history from '../history';
 
-// export const fetchUser = () => dispatch => {
-//   dispatch({ type: 'ASYNC_START' });
-//   adapter.auth.getCurrentUser().then(user => {
-//     dispatch({ type: 'SET_CURRENT_USER', user });
-//   });
-// };
 export function fetchPropertiesSuccess(properties) {
   console.log("fetch properties hit")
-    return {
-        type: 'PROPERTIES_FETCH_DATA_SUCCESS',
-        properties
-    };
+  return {
+      type: 'PROPERTIES_FETCH_DATA_SUCCESS',
+      properties
+  };
 }
 
 export function fetchProperties(url) {
-    return (dispatch) => {
-        fetch(url)
-            .then((response) => response.json())
-            .then((items) => dispatch(fetchPropertiesSuccess(items)))
-    };
+  return (dispatch) => {
+      fetch(url)
+      .then((response) => response.json())
+      .then((items) => dispatch(fetchPropertiesSuccess(items)))
+  };
 }
 
 export function fetchUser() {
@@ -43,51 +37,47 @@ export function findUser(state) {
     return fetch('https://property-assistant-backend.herokuapp.com/find', {
       method: 'POST',
       headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({email: state.email})
     })
     .then(data => data.json())
     .then(data => {
-      if(data.message === "All good! Landlord email is not in database."){
-     // .then(data=> console.log(data))
-     // .then(data=>this.props.setUser(this.state.email, this.state.password))
-     console.log("All good! Landlord email is not in database.")
-     dispatch(registerUser(state))
+      if (data.message === "All good! Landlord email is not in database.") {
+          console.log("All good! Landlord email is not in database.")
+          dispatch(registerUser(state))
       }
       else {
         alert("Email is already used. Please revise, or log in!")
         console.log("Landlord already exists!")
       }
     })
-    }
   }
+}
 
 export function checkUser(email) {
-    return (dispatch) => {
-      return fetch('https://property-assistant-backend.herokuapp.com/find', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-        body: JSON.stringify({email: email})
-      })
-      .then(data => data.json())
-      .then(data => {
-        if(data.message === "All good! Landlord email is not in database."){
-       // .then(data=> console.log(data))
-       // .then(data=>this.props.setUser(this.state.email, this.state.password))
-       console.log("All good! Landlord email is not in database.")
-        }
-        else {
-          alert("Email is already used. Please revise, or log in!")
-          console.log("Landlord already exists!")
-        }
-      })
+  return (dispatch) => {
+    return fetch('https://property-assistant-backend.herokuapp.com/find', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email: email})
+    })
+    .then(data => data.json())
+    .then(data => {
+      if (data.message === "All good! Landlord email is not in database.") {
+        console.log("All good! Landlord email is not in database.")
       }
+      else {
+        alert("Email is already used. Please revise, or log in!")
+        console.log("Landlord already exists!")
+      }
+    })
   }
+}
 
 export function registerUser(state) {
   return (dispatch) => {
@@ -110,19 +100,6 @@ export function registerUser(state) {
       .then(()=>history.push('/profile'));
   }
 }
-
-
-
-// export const loginUser = (username, password, history) => dispatch => {
-//   dispatch({ type: 'ASYNC_START' });
-
-//
-//   adapter.auth.login({ username, password }).then(user => {
-//     localStorage.setItem('token', user.jwt);
-//     dispatch({ type: 'SET_CURRENT_USER', user });
-//     history.push('/profile');
-//   });
-// };
 
   export function loginUser(email, password) {
     console.log(email, password)
@@ -280,8 +257,6 @@ export function sendEmail(state, tenant_email) {
         id: state.landlord_id
       })
     })
-    // .then(data => data.json())
-    // .then(data=> console.log(data))
   }
 }
 
