@@ -22,23 +22,13 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      loginPage:[],
-      uploadScreen:[],
       open: false
     }
   }
 
-  handleFetchUser = () =>{
-    this.props.fetchUser();
-  }
-
-  handleClick = (event) =>{
-    event.preventDefault();
-    console.log(this.state)
+  handleClick = (e) =>{
+    e.preventDefault();
     this.props.loginUser(this.state.email, this.state.password).then(()=>history.push("/profile"));
-    this.setState({
-     loginPage: []
-    })
   }
 
   registerLink = (e)=>{
@@ -47,7 +37,6 @@ class App extends Component {
   }
      // This is a reference to the path of register:
      // //register, so that the Login/Register onclick goes to register,
-     // and it works with githubpages due to the need of  in front of path
 
   handleOpen = () => {
     this.setState({open: true});
